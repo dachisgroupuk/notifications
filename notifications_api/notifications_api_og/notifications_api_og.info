@@ -1,0 +1,5 @@
+core = "6.x"
+name = "Notifications API OG"
+package = Notifications API
+dependencies[] = "og"
+dependencies[] = "notifications_api"
