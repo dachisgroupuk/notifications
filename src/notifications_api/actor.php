@@ -1,12 +1,15 @@
 <?php
 
 /**
- * Representation of the Recipient of a notification
+ * Representation of the Actor of a notification
  *
  * @package notifications_api
  * @author Maarten Jacobs
  */
-interface IRecipient {
+class Actor {
+  
+  protected $_type;
+  protected $_data;
   
   /**
    * Returns the type of the recipient, to be set by the recipient creator.
@@ -14,15 +17,23 @@ interface IRecipient {
    * @return string
    * @author Maarten Jacobs
    */
-  public function getType();
+  public function getType() {
+    return $this->_type;
+  }
+  
   /**
    * Represents the data representing the recipient, of any arbitrary type.
    *
    * @return mixed
    * @author Maarten Jacobs
    */
-  public function getData();
+  public function getData() {
+    return $this->_data;
+  }
   
-  public function __construct($type, $data);
+  public function __construct($type, $data) {
+    $this->_data = $data;
+    $this->_type = '' . $type;
+  }
   
 }

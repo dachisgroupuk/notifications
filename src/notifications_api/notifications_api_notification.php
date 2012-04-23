@@ -10,12 +10,12 @@ class Notifications_Api_Notification {
   /**
    * Node or comment type notification
    */
-  protected $_type;
+  protected $_type_payload;
 
   /**
    * Nodeapi or Comment operation
    */
-  protected $_op;
+  protected $_op_payload;
   
   /**
    * Typically a node or comment object
@@ -23,7 +23,7 @@ class Notifications_Api_Notification {
   protected $_payload;
   
   /**
-   * Uids that will receive this notification
+   * Recipients that will receive this notification
    */
   protected $_recipients;
   
@@ -33,16 +33,11 @@ class Notifications_Api_Notification {
   protected $_message;
   
   /**
-   * Uid that initiated this notification
-   */
-  protected $_initiator;
-  
-  /**
    * Source of the notification
    *
    * @var string
    */
-  protected $_moduleImplements;
+  protected $_origin;
   
   /**
    * Array of callback functions for this notification
@@ -54,17 +49,24 @@ class Notifications_Api_Notification {
   /**
    * Assign properties to this object
    */
-  public function __construct($module_implements, $type, $op, $payload, Notifications_Api_Factory_Queue &$factory) {
-    $this->_moduleImplements = $module_implements;
-    $this->_type = $type;
-    $this->_op = $op;
+  public function __construct($origin, $type_payload, $op_payload, $payload, Notifications_Api_Factory_Queue &$factory) {
+    $this->_origin = $origin;
+    $this->_type = $type_payload;
+    $this->_op = $op_payload;
     $this->_payload = $payload;
     $this->_id = uniqid('notifications_api_notification');
     $this->_factory = $factory;
+
+    // Get default values from the factory
+    $this->setMessage($factory->message);
+    $this->setSender($factory->sender);
+    foreach ($factory->recipients as $recipient) {
+      $this->_addRecipient($recipient);
+    }
     
     // Initilaise callbacks as an array and set the default callback function
     $this->callbacks = array();
-    $this->callbacks[] = $module_implements . '_notifications_api_send';
+    $this->callbacks[] = $origin . '_notifications_api_send';
   }
   
   public function getId() {
@@ -72,19 +74,19 @@ class Notifications_Api_Notification {
   }
 
   public function getType() {
-    return $this->_type;
+    return $this->_type_payload;
   }
 
   public function getOp() {
-    return $this->_op;
+    return $this->_op_payload;
   }
 
   public function getPayload() {
     return $this->_payload;
   }
   
-  public function getModuleImplements() {
-    return $this->_moduleImplements;
+  public function getOrigin() {
+    return $this->_origin;
   }
   
   public function getTos() {
@@ -94,7 +96,6 @@ class Notifications_Api_Notification {
   public function getMessage() {
     return $this->_message;
   }
-  
   
   /**
    * Set this Notification's message
@@ -115,7 +116,7 @@ class Notifications_Api_Notification {
    * @return Notifications_Api_Notification
    * @author Rachel Graves
    */
-  public function setSender($sender) {
+  public function setSender(Sender $sender) {
     $this->_initiator = $sender;
     return $this;
   }
@@ -150,13 +151,13 @@ class Notifications_Api_Notification {
    */
   public function addTo($type, $data) {
     
-    if ($type instanceof IRecipient) {
+    if ($type instanceof Recipient) {
       $recipient = $type;
     } else {
       $recipient = new Recipient($type, $data);      
     }  
+
     $this->_addRecipient($recipient);
-    
     return $this;
   }
   
@@ -171,13 +172,14 @@ class Notifications_Api_Notification {
    */
   public function setTo($type, $data) {
     
-    if ($type instanceof IRecipient) {
+    if ($type instanceof Recipient) {
       $recipient = $type;
     } else {
       $recipient = new Recipient($type, $data);      
     }  
     
-    return $this->_addRecipient($recipient);
+    $this->_recipients = array($recipient);
+    return $this;
   }
   
   /**
@@ -186,7 +188,7 @@ class Notifications_Api_Notification {
    * @param IRecipient $recipient 
    * @return Notifications_Api_Notification
    */
-  protected function _addRecipient(IRecipient $recipient) {
+  protected function _addRecipient(Recipient $recipient) {
     $this->_recipients[] = $recipient;
     return $this;
   }

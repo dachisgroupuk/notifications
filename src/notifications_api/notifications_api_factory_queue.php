@@ -8,41 +8,48 @@ class Notifications_Api_Factory_Queue implements Iterator {
   protected $_id;
 
   /**
-   * Node or comment type notification
+   * Arbitrary string that describes the type of the payload.
    */
-  protected $_type;
+  protected $_type_payload;
 
   /**
-   * Nodeapi or Comment operation
+   * Arbitrary string that describes the operation that has been executed (or has been or will be executed) on the payload.
    */
-  protected $_op;
+  protected $_op_payload;
   
   /**
-   * Typically a node or comment object
+   * Arbitrary payload that has been altered
    */
   protected $_payload;
   
   /**
-   * Uids that will receive this notification
-   */
-  protected $_uids;
-  
-  /**
-   * Notification message
-   */
-  protected $_message;
-  
-  /**
-   * Uid that initiated this notification
-   */
-  protected $_initiatorUid;
-  
-  /**
-   * Source of the notification
+   * Origin of the notification. This is typically a plugin or module.
    *
    * @var string
    */
-  protected $_moduleImplements;
+  protected $_origin;
+
+  /**
+   * Default message for new notifications.
+   *
+   * @var string
+   */
+  public $message;
+
+  /**
+   * Default sender for new Notifications.
+   *
+   * @var Sender
+   */
+  public $sender;
+
+  /**
+   * Default recipients for new Notifications.
+   * All recipients should be of type Recipient.
+   *
+   * @var array
+   */
+  public $recipients;
   
   /**
    * Array of notification objects
@@ -51,11 +58,14 @@ class Notifications_Api_Factory_Queue implements Iterator {
    */
   protected $_notifications;  
  
-  function __construct($module_implements, $type, $op, $payload) {
-    $this->_moduleImplements = $module_implements;
-    $this->_type = $type;
-    $this->_op = $op;
+  function __construct($origin, $type_payload, $op_payload, $payload, $default_sender, $default_recipients, $default_message) {
+    $this->_origin = $origin;
+    $this->_type = $type_payload;
+    $this->_op = $op_payload;
     $this->_payload = $payload;
+    $this->message = $default_message;
+    $this->sender = $default_sender;
+    $this->recipients = $default_recipients;
     $this->_id = uniqid('notifications_api_notification');
     
     // Initialise as an array
@@ -69,8 +79,16 @@ class Notifications_Api_Factory_Queue implements Iterator {
    * @author Rachel Graves
    */
   public function generateNotification() {
-    return new Notifications_Api_Notification($this->_moduleImplements, $this->_type, 
-      $this->_op, $this->_payload, $this);
+    return new Notifications_Api_Notification(
+      $this->_origin, 
+      $this->_type_payload, 
+      $this->_op_payload, 
+      $this->_payload, 
+      $this->_message,
+      $this->_sender,
+      $this->_recipients,
+      $this
+    );
   }
   
   /**
@@ -97,11 +115,11 @@ class Notifications_Api_Factory_Queue implements Iterator {
   }
   
   public function getType() {
-    return $this->_type;
+    return $this->_type_payload;
   }
 
   public function getOp() {
-    return $this->_op;
+    return $this->_op_payload;
   }
 
   public function getPayload() {
@@ -114,8 +132,8 @@ class Notifications_Api_Factory_Queue implements Iterator {
    *
    * @return string
    */
-  public function getModuleImplements() {
-    return $this->_moduleImplements;
+  public function getOrigin() {
+    return $this->_origin;
   }
   
   /**
