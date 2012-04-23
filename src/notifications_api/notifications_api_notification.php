@@ -51,19 +51,25 @@ class Notifications_Api_Notification {
    */
   public function __construct($origin, $type_payload, $op_payload, $payload, Notifications_Api_Factory_Queue &$factory) {
     $this->_origin = $origin;
-    $this->_type = $type_payload;
-    $this->_op = $op_payload;
+    $this->_type_payload = $type_payload;
+    $this->_op_payload = $op_payload;
     $this->_payload = $payload;
     $this->_id = uniqid('notifications_api_notification');
     $this->_factory = $factory;
 
     // Get default values from the factory
     $this->setMessage($factory->message);
-    $this->setSender($factory->sender);
-    foreach ($factory->recipients as $recipient) {
-      $this->_addRecipient($recipient);
-    }
-    
+		if($factory->sender instanceof Sender){
+    	$this->setSender($factory->sender);
+		}
+		
+		if(is_array($factory->recipients)){
+			foreach ($factory->recipients as $recipient) {
+				if($recipient instanceof Recipient){
+					$this->_addRecipient($recipient);
+				}	      
+	    }
+		}    
     // Initilaise callbacks as an array and set the default callback function
     $this->callbacks = array();
     $this->callbacks[] = $origin . '_notifications_api_send';
