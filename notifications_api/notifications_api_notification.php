@@ -95,11 +95,26 @@ class Notifications_Api_Notification {
     return $this->_message;
   }
   
+  
+  /**
+   * Set this Notification's message
+   *
+   * @param string $message 
+   * @return Notifications_Api_Notification
+   * @author Rachel Graves
+   */
   public function setMessage($message) {
     $this->_message = $message;
     return $this;
   }
 
+  /**
+   * Set the notification's sender
+   *
+   * @param string $sender 
+   * @return Notifications_Api_Notification
+   * @author Rachel Graves
+   */
   public function setSender($sender) {
     $this->_initiator = $sender;
     return $this;
@@ -165,6 +180,12 @@ class Notifications_Api_Notification {
     return $this->_addRecipient($recipient);
   }
   
+  /**
+   * Add a recipient to the notification
+   *
+   * @param IRecipient $recipient 
+   * @return Notifications_Api_Notification
+   */
   protected function _addRecipient(IRecipient $recipient) {
     $this->_recipients[] = $recipient;
     return $this;

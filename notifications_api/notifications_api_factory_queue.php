@@ -108,18 +108,42 @@ class Notifications_Api_Factory_Queue implements Iterator {
     return $this->_payload;
   }
   
+  /**
+   * Return a string of the module that implemented this
+   * factory
+   *
+   * @return string
+   */
   public function getModuleImplements() {
     return $this->_moduleImplements;
   }
   
+  /**
+   * Rewind the list of notifications to the beginning
+   *
+   * @return void
+   */
   public function rewind() {
     reset($this->_notifications);
   }
 
+  /**
+   * Return the current notification
+   *
+   * @return Notifications_Api_Notification
+   * @author Rachel Graves
+   */
   public function current() {
     return current($this->_notifications);
   }
 
+  /**
+   * Return the current notification being pointed at
+   * by the array's internal pointer
+   *
+   * @return Notifications_Api_Notification
+   * @author Rachel Graves
+   */
   public function key() {
     return key($this->_notifications);
   }
