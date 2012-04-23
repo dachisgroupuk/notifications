@@ -8,26 +8,26 @@ class FactoryTest extends PHPUnit_Framework_TestCase {
 	}
 	
 	public function testType(){
-		$module_implements = 'calendarevents';
-		$type = 'node';
-		$op = 'node';
+		$origin = 'calendarevent';
+		$type_payload = 'node';
+		$op_payload = 'create';
 		$payload = array('cookies','fruit', array('I' => 'Hate you'));
-		$factory = new Notifications_Api_Factory_Queue($module_implements, $type, $op, $payload);
+		$factory = new Notifications_Api_Factory_Queue($origin, $type_payload, $op_payload, $payload);
 		$notification = $factory->generateNotification();
 		
-		$this->assertEquals($notification->getType(), $type);
-		$this->assertEquals($notification->getOp(), $op);
+		$this->assertEquals($notification->getType(), $type_payload);
+		$this->assertEquals($notification->getOp(), $op_payload);
 		$this->assertEquals($notification->getPayload(), $payload);
-		$this->assertEquals($notification->getModuleImplements(), $module_implements);
+		$this->assertEquals($notification->getOrigin(), $origin);
 		
 	}
 	
 	public function testUniqid(){
-		$module_implements = 'calendarevents';
+		$origin = 'calendarevents';
 		$type = 'node';
-		$op = 'node';
+		$op = 'remove';
 		$payload = array('cookies','fruit', array('I' => 'Hate you'));
-		$factory = new Notifications_Api_Factory_Queue($module_implements, $type, $op, $payload);
+		$factory = new Notifications_Api_Factory_Queue($origin, $type, $op, $payload);
 		$notification = $factory->generateNotification();
 		$notification2 = $factory->generateNotification();
 		

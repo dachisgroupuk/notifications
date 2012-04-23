@@ -58,10 +58,10 @@ class Notifications_Api_Factory_Queue implements Iterator {
    */
   protected $_notifications;  
  
-  function __construct($origin, $type_payload, $op_payload, $payload, $default_sender, $default_recipients, $default_message) {
+  function __construct($origin, $type_payload, $op_payload, $payload, $default_sender=null, $default_recipients=null, $default_message=null) {
     $this->_origin = $origin;
-    $this->_type = $type_payload;
-    $this->_op = $op_payload;
+    $this->_type_payload = $type_payload;
+    $this->_op_payload = $op_payload;
     $this->_payload = $payload;
     $this->message = $default_message;
     $this->sender = $default_sender;
@@ -80,13 +80,10 @@ class Notifications_Api_Factory_Queue implements Iterator {
    */
   public function generateNotification() {
     return new Notifications_Api_Notification(
-      $this->_origin, 
-      $this->_type_payload, 
-      $this->_op_payload, 
-      $this->_payload, 
-      $this->_message,
-      $this->_sender,
-      $this->_recipients,
+      $this->getOrigin(), 
+      $this->getType(), 
+      $this->getOp(), 
+      $this->getPayload(),
       $this
     );
   }
