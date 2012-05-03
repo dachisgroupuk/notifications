@@ -39,6 +39,13 @@ class Notifications_Api_Notification {
    */
   protected $_origin;
   
+	/**
+ 	* Internal array for dynamic properties
+ 	*
+ 	* @var array
+ 	*/
+	protected $_data;
+	
   /**
    * Array of callback functions for this notification
    *
@@ -50,6 +57,7 @@ class Notifications_Api_Notification {
    * Assign properties to this object
    */
   public function __construct($origin, $type_payload, $op_payload, $payload, Notifications_Api_Factory_Queue &$factory) {
+    $this->_data = array();
     $this->_origin = $origin;
     $this->_type_payload = $type_payload;
     $this->_op_payload = $op_payload;
@@ -73,6 +81,16 @@ class Notifications_Api_Notification {
     // Initilaise callbacks as an array and set the default callback function
     $this->callbacks = array();
     $this->callbacks[] = $origin . '_notifications_api_send';
+  }
+  
+  public function __get($name){
+    if( isset($this->_data[$name]) ){
+      return $this->_data[$name];
+    }
+  }
+  
+  public function __set( $name, $value ){
+    $this->_data[$name] = $value;
   }
   
   public function getId() {
