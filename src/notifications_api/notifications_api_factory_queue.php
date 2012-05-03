@@ -56,7 +56,14 @@ class Notifications_Api_Factory_Queue implements Iterator {
    *
    * @var array
    */
-  protected $_notifications;  
+  protected $_notifications;
+  
+  /**
+ 	* Internal array for dynamic properties
+ 	*
+ 	* @var array
+ 	*/
+	protected $_data;  
  
   function __construct($origin, $type_payload, $op_payload, $payload, $default_sender=null, $default_recipients=null, $default_message=null) {
     $this->_origin = $origin;
@@ -121,6 +128,16 @@ class Notifications_Api_Factory_Queue implements Iterator {
 
   public function getPayload() {
     return $this->_payload;
+  }
+  
+  public function __get($name){
+    if( isset($this->_data[$name]) ){
+      return $this->_data[$name];
+    }
+  }
+  
+  public function __set( $name, $value ){
+    $this->_data[$name] = $value;
   }
   
   /**
