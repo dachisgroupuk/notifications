@@ -1,1 +1,0 @@
-JUnit output

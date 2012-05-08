@@ -1,7 +1,0 @@
-<project name="notifications" default="run-tests">
-	<target name="run-tests">
-		<exec executable="phpunit">
-			<arg line="--log-junit build/logs/phpunit.xml --bootstrap bootstrap.php tests" />
-		</exec>
-	</target>
-</project>
