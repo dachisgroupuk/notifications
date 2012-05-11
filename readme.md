@@ -95,3 +95,19 @@ A recipient is a sample child class of Actor, which can be used to represent the
 #### Sender
 
 A sender is a sample child class of Actor, which can be used to represent the sender of a notification. Like Actor, it accepts any type of data you would like to assign.
+
+## Developer notes
+
+### Generating documentation
+
+1. Install PHP Documentor 2
+
+	Possibly might need `sudo`.
+
+	`pear channel-discover pear.phpdoc.org && pear install phpdoc/phpDocumentor-alpha`
+
+2. Run PHP Documentor 2
+
+	Remember to point your terminal to the root of the project.
+	
+	`phpdoc --target docs --ignore docs/* --directory .`
