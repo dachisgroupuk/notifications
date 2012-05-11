@@ -86,15 +86,19 @@ For instance: imagine a logging module. It would generate notifications accordin
 
 ### Actor
 
-The Actor class is a simple base class that can be inherited from, to have system-specific participants for your notifications. You can also use the provided example classes (`Recipient` and `Sender`) and save arbitrary data on those objects.
+The Actor class is a simple base class, to represent a participant in the notification.
 
 #### Recipient
 
-A recipient is a sample child class of Actor, which can be used to represent the recipient (but also recipient**s**) of a notification. Like Actor, it accepts any type of data you would like to assign.
+A recipient is a child class of Actor, which can be used to represent the recipient (but also recipient**s**) of a notification. Like Actor, it accepts any type of data you would like to assign.
+
+It's recommended to inherit from this class to make Recipients specific to your systems.
 
 #### Sender
 
-A sender is a sample child class of Actor, which can be used to represent the sender of a notification. Like Actor, it accepts any type of data you would like to assign.
+A sender is a child class of Actor, which can be used to represent the sender of a notification. Like Actor, it accepts any type of data you would like to assign.
+
+It's recommended to inherit from this class to make Senders specific to your systems.
 
 ## Developer notes
 
