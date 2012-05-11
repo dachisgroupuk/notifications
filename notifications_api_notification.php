@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * Represents a single notification in the system.
+ *
+ * @package notifications_api
+ * @author Maarten Jacobs
+ * @author Rachel Graves
+ **/
 class Notifications_Api_Notification {
 
   /**
@@ -55,6 +62,12 @@ class Notifications_Api_Notification {
   
   /**
    * Assign properties to this object
+   * 
+   * @param string $origin The module that was passed a Factory, which subsequently generated this  notification.
+   * @param string $type_payload Type of the content that has been passed.
+   * @param string $op_payload The operation that has been executed (or will be executed) on the payload, which is the trigger for the notification process. 
+   * @param mixed $payload The piece of content which has acted upon.
+   * @param Notifications_Api_Factory_Queue $factory The Factory that was used to generate this notification object.
    */
   public function __construct($origin, $type_payload, $op_payload, $payload, Notifications_Api_Factory_Queue &$factory) {
     $this->_data = array();
