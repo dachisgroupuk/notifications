@@ -1,0 +1,9 @@
+<project name="Notifications" basedir="." default="test">
+
+  <target name="test">
+    <exec executable="phpunit">
+      <arg value="tests" />
+    </exec>
+  </target>
+
+</project>
