@@ -95,7 +95,7 @@
       </method>
     </class>
   </file>
-  <file path="notifications_api_factory_queue.php" hash="d291812689545ffdefc8e1758fc25805" package="notifications\api">
+  <file path="notifications_api_factory_queue.php" hash="dab9f324be9ae64f815729b2790e577c" package="notifications\api">
     <docblock line="3">
       <description><![CDATA[Factory that can generate and hold notifications.]]></description>
       <long-description><![CDATA[]]></long-description>
@@ -527,18 +527,38 @@ Required for Iterator class]]></description>
           <type>Notifications_Api_Notification</type>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="306" package="">
-        <name>getNotifications</name>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="305" package="">
+        <name>getNotification</name>
         <type>function</type>
         <docblock line="298">
+          <description><![CDATA[Retrieves a notification by id from the list of notifications.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="298" name="param" description="The generated id of a notification." type="string" variable="$id">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="298" name="return" description="" type="\Notifications_Api_Notification">
+            <type by_reference="false">\Notifications_Api_Notification</type>
+          </tag>
+          <tag line="298" name="author" description="Maarten Jacobs"/>
+        </docblock>
+        <argument line="305">
+          <name>$id</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="320" package="">
+        <name>getNotifications</name>
+        <type>function</type>
+        <docblock line="312">
           <description><![CDATA[Test function
 TODO: REMOVE ME]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="298" name="return" description="" type="array">
+          <tag line="312" name="return" description="" type="array">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="298" name="author" description="Rachel Graves"/>
-          <tag line="298" name="author" description="Maarten Jacobs"/>
+          <tag line="312" name="author" description="Rachel Graves"/>
+          <tag line="312" name="author" description="Maarten Jacobs"/>
         </docblock>
       </method>
     </class>
