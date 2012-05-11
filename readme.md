@@ -100,6 +100,10 @@ A sender is a sample child class of Actor, which can be used to represent the se
 
 ### Generating documentation
 
+0. Install GraphViz
+
+	Get [a binary](http://www.graphviz.org/Download_macos.php), and install it!
+
 1. Install PHP Documentor 2
 
 	Possibly might need `sudo`.
@@ -109,5 +113,7 @@ A sender is a sample child class of Actor, which can be used to represent the se
 2. Run PHP Documentor 2
 
 	Remember to point your terminal to the root of the project.
+
+	There is a PHPDoc configuration file in the root (see: `phpdoc.xml`).
 	
-	`phpdoc --target docs --ignore docs/* --directory .`
+	`phpdoc`
