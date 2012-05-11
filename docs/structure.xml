@@ -893,26 +893,42 @@ effectively erasing the list of recipients.]]></description>
       </method>
     </class>
   </file>
-  <file path="recipient.php" hash="d25849cbbb29ca40c6f7c2e3b75d0cc6" package="Default">
-    <parse_markers>
-      <error line="3" code="50000">No DocBlock was found for Recipient</error>
-      <error line="1" code="50007">No page-level DocBlock was found in file recipient.php</error>
-    </parse_markers>
-    <class final="false" abstract="false" namespace="default" line="3" package="Default">
+  <file path="recipient.php" hash="f26929f9fe818371cf24e46946d6d059" package="notifications\api">
+    <docblock line="3">
+      <description><![CDATA[Represents a single Recipient in the system.]]></description>
+      <long-description><![CDATA[<p>Highly recommended to inherit from, to represent Recipients in your system.</p>]]></long-description>
+      <tag line="3" name="package" description="notifications_api"/>
+      <tag line="3" name="author" description="Maarten Jacobs"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="default" line="10" package="notifications\api">
       <name>Recipient</name>
       <full_name>\Recipient</full_name>
       <extends>\Actor</extends>
+      <docblock line="3">
+        <description><![CDATA[Represents a single Recipient in the system.]]></description>
+        <long-description><![CDATA[<p>Highly recommended to inherit from, to represent Recipients in your system.</p>]]></long-description>
+        <tag line="3" name="package" description="notifications_api"/>
+        <tag line="3" name="author" description="Maarten Jacobs"/>
+      </docblock>
     </class>
   </file>
-  <file path="sender.php" hash="24fc504557aa1ed9dba1735a2d658d98" package="Default">
-    <parse_markers>
-      <error line="3" code="50000">No DocBlock was found for Sender</error>
-      <error line="1" code="50007">No page-level DocBlock was found in file sender.php</error>
-    </parse_markers>
-    <class final="false" abstract="false" namespace="default" line="3" package="Default">
+  <file path="sender.php" hash="b5e689371875bc3d081e23e8e19245ef" package="notifications\api">
+    <docblock line="3">
+      <description><![CDATA[Represents a single Sender in the system.]]></description>
+      <long-description><![CDATA[<p>Highly recommended to inherit from, to represent Senders in your system.</p>]]></long-description>
+      <tag line="3" name="package" description="notifications_api"/>
+      <tag line="3" name="author" description="Maarten Jacobs"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="default" line="10" package="notifications\api">
       <name>Sender</name>
       <full_name>\Sender</full_name>
       <extends>\Actor</extends>
+      <docblock line="3">
+        <description><![CDATA[Represents a single Sender in the system.]]></description>
+        <long-description><![CDATA[<p>Highly recommended to inherit from, to represent Senders in your system.</p>]]></long-description>
+        <tag line="3" name="package" description="notifications_api"/>
+        <tag line="3" name="author" description="Maarten Jacobs"/>
+      </docblock>
     </class>
   </file>
   <package name="" full_name=""/>
