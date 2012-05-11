@@ -1,0 +1,765 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project version="2.0.0a2" title="">
+  <file path="actor.php" hash="d0938b89efdc9546521c34ca3b371f45" package="notifications\api">
+    <docblock line="3">
+      <description><![CDATA[Representation of the Actor of a notification]]></description>
+      <long-description><![CDATA[]]></long-description>
+      <tag line="3" name="package" description="notifications_api"/>
+      <tag line="3" name="author" description="Maarten Jacobs"/>
+    </docblock>
+    <parse_markers>
+      <error line="11" code="50018">No DocBlock was found for property $_type</error>
+      <error line="12" code="50018">No DocBlock was found for property $_data</error>
+      <error line="34" code="50010">No DocBlock was found for method __construct()</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="default" line="9" package="notifications\api">
+      <name>Actor</name>
+      <full_name>\Actor</full_name>
+      <extends/>
+      <docblock line="3">
+        <description><![CDATA[Representation of the Actor of a notification]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="3" name="package" description="notifications_api"/>
+        <tag line="3" name="author" description="Maarten Jacobs"/>
+      </docblock>
+      <property final="false" static="false" visibility="protected" line="11" package="Default">
+        <name>$_type</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <property final="false" static="false" visibility="protected" line="12" package="Default">
+        <name>$_data</name>
+        <default><![CDATA[]]></default>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="20" package="">
+        <name>getType</name>
+        <type>function</type>
+        <docblock line="14">
+          <description><![CDATA[Returns the type of the recipient, to be set by the recipient creator.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="14" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="14" name="author" description="Maarten Jacobs"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="30" package="">
+        <name>getData</name>
+        <type>function</type>
+        <docblock line="24">
+          <description><![CDATA[Represents the data representing the recipient, of any arbitrary type.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="24" name="return" description="" type="mixed">
+            <type by_reference="false">mixed</type>
+          </tag>
+          <tag line="24" name="author" description="Maarten Jacobs"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="34" package="">
+        <name>__construct</name>
+        <type>function</type>
+        <argument line="34">
+          <name>$type</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="34">
+          <name>$data</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="notifications_api_factory_queue.php" hash="91d7ed7d9a656e2766ac67c17b4164ff" package="Default">
+    <parse_markers>
+      <error line="68" code="50010">No DocBlock was found for method __construct()</error>
+      <error line="121" code="50010">No DocBlock was found for method getType()</error>
+      <error line="125" code="50010">No DocBlock was found for method getOp()</error>
+      <error line="129" code="50010">No DocBlock was found for method getPayload()</error>
+      <error line="133" code="50010">No DocBlock was found for method __get()</error>
+      <error line="139" code="50010">No DocBlock was found for method __set()</error>
+      <error line="183" code="50010">No DocBlock was found for method next()</error>
+      <error line="187" code="50010">No DocBlock was found for method valid()</error>
+      <error line="3" code="50000">No DocBlock was found for Notifications_Api_Factory_Queue</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file notifications_api_factory_queue.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="default" line="3" package="Default">
+      <name>Notifications_Api_Factory_Queue</name>
+      <full_name>\Notifications_Api_Factory_Queue</full_name>
+      <extends/>
+      <implements>\Iterator</implements>
+      <property final="false" static="false" visibility="protected" line="8" package="Default">
+        <name>$_id</name>
+        <default><![CDATA[]]></default>
+        <docblock line="5">
+          <description><![CDATA[Object ID]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="protected" line="13" package="Default">
+        <name>$_type_payload</name>
+        <default><![CDATA[]]></default>
+        <docblock line="10">
+          <description><![CDATA[Arbitrary string that describes the type of the payload.]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="protected" line="18" package="Default">
+        <name>$_op_payload</name>
+        <default><![CDATA[]]></default>
+        <docblock line="15">
+          <description><![CDATA[Arbitrary string that describes the operation that has been executed (or has been or will be executed) on the payload.]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="protected" line="23" package="Default">
+        <name>$_payload</name>
+        <default><![CDATA[]]></default>
+        <docblock line="20">
+          <description><![CDATA[Arbitrary payload that has been altered]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="protected" line="30" package="Default">
+        <name>$_origin</name>
+        <default><![CDATA[]]></default>
+        <docblock line="25">
+          <description><![CDATA[Origin of the notification. This is typically a plugin or module.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="25" name="var" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="public" line="37" package="Default">
+        <name>$message</name>
+        <default><![CDATA[]]></default>
+        <docblock line="32">
+          <description><![CDATA[Default message for new notifications.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="32" name="var" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="public" line="44" package="Default">
+        <name>$sender</name>
+        <default><![CDATA[]]></default>
+        <docblock line="39">
+          <description><![CDATA[Default sender for new Notifications.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="39" name="var" description="" type="\Sender">
+            <type by_reference="false">\Sender</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="public" line="52" package="Default">
+        <name>$recipients</name>
+        <default><![CDATA[]]></default>
+        <docblock line="46">
+          <description><![CDATA[Default recipients for new Notifications.]]></description>
+          <long-description><![CDATA[<p>All recipients should be of type Recipient.</p>]]></long-description>
+          <tag line="46" name="var" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="protected" line="59" package="Default">
+        <name>$_notifications</name>
+        <default><![CDATA[]]></default>
+        <docblock line="54">
+          <description><![CDATA[Array of notification objects]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="54" name="var" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="protected" line="66" package="Default">
+        <name>$_data</name>
+        <default><![CDATA[]]></default>
+        <docblock line="61">
+          <description><![CDATA[Internal array for dynamic properties]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="61" name="var" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="68" package="">
+        <name>__construct</name>
+        <type>function</type>
+        <argument line="68">
+          <name>$origin</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="68">
+          <name>$type_payload</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="68">
+          <name>$op_payload</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="68">
+          <name>$payload</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="68">
+          <name>$default_sender</name>
+          <default><![CDATA[null]]></default>
+          <type/>
+        </argument>
+        <argument line="68">
+          <name>$default_recipients</name>
+          <default><![CDATA[null]]></default>
+          <type/>
+        </argument>
+        <argument line="68">
+          <name>$default_message</name>
+          <default><![CDATA[null]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="88" package="">
+        <name>generateNotification</name>
+        <type>function</type>
+        <docblock line="82">
+          <description><![CDATA[undocumented function]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="82" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+          <tag line="82" name="author" description="Rachel Graves"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="105" package="">
+        <name>storeNotification</name>
+        <type>function</type>
+        <docblock line="98">
+          <description><![CDATA[Store a notification back in the bender factory]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="98" name="param" description="" type="\Notifications_Api_Notification" variable="$notification">
+            <type by_reference="false">\Notifications_Api_Notification</type>
+          </tag>
+          <tag line="98" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+          <tag line="98" name="author" description="Rachel Graves"/>
+        </docblock>
+        <argument line="105">
+          <name>$notification</name>
+          <default><![CDATA[]]></default>
+          <type>Notifications_Api_Notification</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="115" package="">
+        <name>send</name>
+        <type>function</type>
+        <docblock line="109">
+          <description><![CDATA[Instruct notifications to send]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="109" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+          <tag line="109" name="author" description="Rachel Graves"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="121" package="">
+        <name>getType</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="125" package="">
+        <name>getOp</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="129" package="">
+        <name>getPayload</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="133" package="">
+        <name>__get</name>
+        <type>function</type>
+        <argument line="133">
+          <name>$name</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="139" package="">
+        <name>__set</name>
+        <type>function</type>
+        <argument line="139">
+          <name>$name</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="139">
+          <name>$value</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="149" package="">
+        <name>getOrigin</name>
+        <type>function</type>
+        <docblock line="143">
+          <description><![CDATA[Return a string of the module that implemented this
+factory]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="143" name="return" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="158" package="">
+        <name>rewind</name>
+        <type>function</type>
+        <docblock line="153">
+          <description><![CDATA[Rewind the list of notifications to the beginning]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="153" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="168" package="">
+        <name>current</name>
+        <type>function</type>
+        <docblock line="162">
+          <description><![CDATA[Return the current notification]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="162" name="return" description="" type="\Notifications_Api_Notification">
+            <type by_reference="false">\Notifications_Api_Notification</type>
+          </tag>
+          <tag line="162" name="author" description="Rachel Graves"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="179" package="">
+        <name>key</name>
+        <type>function</type>
+        <docblock line="172">
+          <description><![CDATA[Return the current notification being pointed at
+by the array's internal pointer]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="172" name="return" description="" type="\Notifications_Api_Notification">
+            <type by_reference="false">\Notifications_Api_Notification</type>
+          </tag>
+          <tag line="172" name="author" description="Rachel Graves"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="183" package="">
+        <name>next</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="187" package="">
+        <name>valid</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="200" package="">
+        <name>updateNotification</name>
+        <type>function</type>
+        <docblock line="192">
+          <description><![CDATA[Updates a given notification by key, first checking if it's the same notification.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="192" name="param" description="" type="string" variable="$key">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="192" name="param" description="" type="\Notifications_Api_Notification" variable="$notification">
+            <type by_reference="false">\Notifications_Api_Notification</type>
+          </tag>
+          <tag line="192" name="return" description="" type="mixed">
+            <type by_reference="false">mixed</type>
+          </tag>
+          <tag line="192" name="author" description="Maarten Jacobs"/>
+        </docblock>
+        <argument line="200">
+          <name>$key</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="200">
+          <name>$notification</name>
+          <default><![CDATA[]]></default>
+          <type>Notifications_Api_Notification</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="215" package="">
+        <name>getNotifications</name>
+        <type>function</type>
+        <docblock line="208">
+          <description><![CDATA[Test function
+TODO: REMOVE ME]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="208" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+          <tag line="208" name="author" description="Maarten Jacobs"/>
+        </docblock>
+      </method>
+    </class>
+  </file>
+  <file path="notifications_api_notification.php" hash="dce86bb81d379ddaff7a0b88657cfee7" package="Default">
+    <parse_markers>
+      <error line="56" code="50015">Argument $origin is missing from the Docblock of __construct()</error>
+      <error line="56" code="50015">Argument $type_payload is missing from the Docblock of __construct()</error>
+      <error line="56" code="50015">Argument $op_payload is missing from the Docblock of __construct()</error>
+      <error line="56" code="50015">Argument $payload is missing from the Docblock of __construct()</error>
+      <error line="56" code="50015">Argument $factory is missing from the Docblock of __construct()</error>
+      <error line="86" code="50010">No DocBlock was found for method __get()</error>
+      <error line="92" code="50010">No DocBlock was found for method __set()</error>
+      <error line="96" code="50010">No DocBlock was found for method getId()</error>
+      <error line="100" code="50010">No DocBlock was found for method getType()</error>
+      <error line="104" code="50010">No DocBlock was found for method getOp()</error>
+      <error line="108" code="50010">No DocBlock was found for method getPayload()</error>
+      <error line="112" code="50010">No DocBlock was found for method getOrigin()</error>
+      <error line="116" code="50010">No DocBlock was found for method getTos()</error>
+      <error line="120" code="50010">No DocBlock was found for method getMessage()</error>
+      <error line="136" code="50016">The type hint of the argument is incorrect for the type definition of the @param tag with argument $sender in setSender()</error>
+      <error line="209" code="50016">The type hint of the argument is incorrect for the type definition of the @param tag with argument $recipient in _addRecipient()</error>
+      <error line="3" code="50000">No DocBlock was found for Notifications_Api_Notification</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file notifications_api_notification.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="default" line="3" package="Default">
+      <name>Notifications_Api_Notification</name>
+      <full_name>\Notifications_Api_Notification</full_name>
+      <extends/>
+      <property final="false" static="false" visibility="protected" line="8" package="Default">
+        <name>$_id</name>
+        <default><![CDATA[]]></default>
+        <docblock line="5">
+          <description><![CDATA[Object ID]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="protected" line="13" package="Default">
+        <name>$_type_payload</name>
+        <default><![CDATA[]]></default>
+        <docblock line="10">
+          <description><![CDATA[Node or comment type notification]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="protected" line="18" package="Default">
+        <name>$_op_payload</name>
+        <default><![CDATA[]]></default>
+        <docblock line="15">
+          <description><![CDATA[Nodeapi or Comment operation]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="protected" line="23" package="Default">
+        <name>$_payload</name>
+        <default><![CDATA[]]></default>
+        <docblock line="20">
+          <description><![CDATA[Typically a node or comment object]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="protected" line="28" package="Default">
+        <name>$_recipients</name>
+        <default><![CDATA[]]></default>
+        <docblock line="25">
+          <description><![CDATA[Recipients that will receive this notification]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="protected" line="33" package="Default">
+        <name>$_message</name>
+        <default><![CDATA[]]></default>
+        <docblock line="30">
+          <description><![CDATA[Notification message]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="protected" line="40" package="Default">
+        <name>$_origin</name>
+        <default><![CDATA[]]></default>
+        <docblock line="35">
+          <description><![CDATA[Source of the notification]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="35" name="var" description="" type="string">
+            <type by_reference="false">string</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="protected" line="47" package="Default">
+        <name>$_data</name>
+        <default><![CDATA[]]></default>
+        <docblock line="42">
+          <description><![CDATA[Internal array for dynamic properties]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="42" name="var" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+      </property>
+      <property final="false" static="false" visibility="public" line="54" package="Default">
+        <name>$callbacks</name>
+        <default><![CDATA[]]></default>
+        <docblock line="49">
+          <description><![CDATA[Array of callback functions for this notification]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="49" name="var" description="" type="array">
+            <type by_reference="false">array</type>
+          </tag>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="59" package="">
+        <name>__construct</name>
+        <type>function</type>
+        <docblock line="56">
+          <description><![CDATA[Assign properties to this object]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+        <argument line="59">
+          <name>$origin</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="59">
+          <name>$type_payload</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="59">
+          <name>$op_payload</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="59">
+          <name>$payload</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="59">
+          <name>$factory</name>
+          <default><![CDATA[]]></default>
+          <type>Notifications_Api_Factory_Queue</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="86" package="">
+        <name>__get</name>
+        <type>function</type>
+        <argument line="86">
+          <name>$name</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="92" package="">
+        <name>__set</name>
+        <type>function</type>
+        <argument line="92">
+          <name>$name</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="92">
+          <name>$value</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="96" package="">
+        <name>getId</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="100" package="">
+        <name>getType</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="104" package="">
+        <name>getOp</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="108" package="">
+        <name>getPayload</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="112" package="">
+        <name>getOrigin</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="116" package="">
+        <name>getTos</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="120" package="">
+        <name>getMessage</name>
+        <type>function</type>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="131" package="">
+        <name>setMessage</name>
+        <type>function</type>
+        <docblock line="124">
+          <description><![CDATA[Set this Notification's message]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="124" name="param" description="" type="string" variable="$message">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="124" name="return" description="" type="\Notifications_Api_Notification">
+            <type by_reference="false">\Notifications_Api_Notification</type>
+          </tag>
+          <tag line="124" name="author" description="Rachel Graves"/>
+        </docblock>
+        <argument line="131">
+          <name>$message</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="143" package="">
+        <name>setSender</name>
+        <type>function</type>
+        <docblock line="136">
+          <description><![CDATA[Set the notification's sender]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="136" name="param" description="" type="string" variable="$sender">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="136" name="return" description="" type="\Notifications_Api_Notification">
+            <type by_reference="false">\Notifications_Api_Notification</type>
+          </tag>
+          <tag line="136" name="author" description="Rachel Graves"/>
+        </docblock>
+        <argument line="143">
+          <name>$sender</name>
+          <default><![CDATA[]]></default>
+          <type>Sender</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="151" package="">
+        <name>send</name>
+        <type>function</type>
+        <docblock line="148">
+          <description><![CDATA[Send this notification]]></description>
+          <long-description><![CDATA[]]></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="164" package="">
+        <name>store</name>
+        <type>function</type>
+        <docblock line="158">
+          <description><![CDATA[Store a notification back in the PG tips factory]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="158" name="return" description="" type="void">
+            <type by_reference="false">void</type>
+          </tag>
+          <tag line="158" name="author" description="Rachel Graves"/>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="176" package="">
+        <name>addTo</name>
+        <type>function</type>
+        <docblock line="168">
+          <description><![CDATA[Adds a recipient to the list of recipients]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="168" name="param" description="" type="string" variable="$type">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="168" name="param" description="" type="mixed" variable="$data">
+            <type by_reference="false">mixed</type>
+          </tag>
+          <tag line="168" name="return" description="" type="\Notifications_Api_Notification">
+            <type by_reference="false">\Notifications_Api_Notification</type>
+          </tag>
+          <tag line="168" name="author" description="Maarten Jacobs"/>
+        </docblock>
+        <argument line="176">
+          <name>$type</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="176">
+          <name>$data</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="197" package="">
+        <name>setTo</name>
+        <type>function</type>
+        <docblock line="188">
+          <description><![CDATA[Set the recipients list to a single recipient,
+effectively erasing the list of recipients.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="188" name="param" description="" type="string" variable="$type">
+            <type by_reference="false">string</type>
+          </tag>
+          <tag line="188" name="param" description="" type="mixed" variable="$data">
+            <type by_reference="false">mixed</type>
+          </tag>
+          <tag line="188" name="return" description="" type="\Notifications_Api_Notification">
+            <type by_reference="false">\Notifications_Api_Notification</type>
+          </tag>
+          <tag line="188" name="author" description="Maarten Jacobs"/>
+        </docblock>
+        <argument line="197">
+          <name>$type</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+        <argument line="197">
+          <name>$data</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="default" line="215" package="">
+        <name>_addRecipient</name>
+        <type>function</type>
+        <docblock line="209">
+          <description><![CDATA[Add a recipient to the notification]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="209" name="param" description="" type="\IRecipient" variable="$recipient">
+            <type by_reference="false">\IRecipient</type>
+          </tag>
+          <tag line="209" name="return" description="" type="\Notifications_Api_Notification">
+            <type by_reference="false">\Notifications_Api_Notification</type>
+          </tag>
+        </docblock>
+        <argument line="215">
+          <name>$recipient</name>
+          <default><![CDATA[]]></default>
+          <type>Recipient</type>
+        </argument>
+      </method>
+    </class>
+  </file>
+  <file path="recipient.php" hash="d25849cbbb29ca40c6f7c2e3b75d0cc6" package="Default">
+    <parse_markers>
+      <error line="3" code="50000">No DocBlock was found for Recipient</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file recipient.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="default" line="3" package="Default">
+      <name>Recipient</name>
+      <full_name>\Recipient</full_name>
+      <extends>\Actor</extends>
+    </class>
+  </file>
+  <file path="sender.php" hash="24fc504557aa1ed9dba1735a2d658d98" package="Default">
+    <parse_markers>
+      <error line="3" code="50000">No DocBlock was found for Sender</error>
+      <error line="1" code="50007">No page-level DocBlock was found in file sender.php</error>
+    </parse_markers>
+    <class final="false" abstract="false" namespace="default" line="3" package="Default">
+      <name>Sender</name>
+      <full_name>\Sender</full_name>
+      <extends>\Actor</extends>
+    </class>
+  </file>
+  <package name="" full_name=""/>
+  <package name="Default" full_name="Default"/>
+  <package name="notifications" full_name="notifications">
+    <package name="api" full_name="notifications\api"/>
+  </package>
+  <namespace name="default" full_name="default"/>
+  <marker count="0">todo</marker>
+  <marker count="0">fixme</marker>
+  <deprecated count="0"/>
+</project>
