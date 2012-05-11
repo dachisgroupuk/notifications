@@ -294,6 +294,20 @@ class Notifications_Api_Factory_Queue implements Iterator {
     $this->_notifications[$key] = $notification;
     return $this;
   }
+
+  /**
+   * Retrieves a notification by id from the list of notifications. 
+   *
+   * @param string $id The generated id of a notification.
+   * @return Notifications_Api_Notification
+   * @author Maarten Jacobs 
+   **/
+  public function getNotification($id) {
+    if (!is_string($id) || !array_key_exists($id, $this->_notifications)) {
+      return FALSE;
+    }
+    return $this->_notifications[$id];
+  }
   
   /**
    * Test function
