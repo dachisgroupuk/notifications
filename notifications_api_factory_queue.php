@@ -183,6 +183,18 @@ class Notifications_Api_Factory_Queue implements Iterator {
   }
   
   /**
+   * Return a string of the module that implemented this
+   * factory
+   *
+   * @return string
+   * @author Rachel Graves 
+   * @author Maarten Jacobs 
+   */
+  public function getOrigin() {
+    return $this->_origin;
+  }
+  
+  /**
    * Returns the value of a dynamic property of this object.
    *
    * @param string $name Name of the dynamic property
@@ -205,18 +217,6 @@ class Notifications_Api_Factory_Queue implements Iterator {
    **/
   public function __set($name, $value) {
     $this->_data[$name] = $value;
-  }
-  
-  /**
-   * Return a string of the module that implemented this
-   * factory
-   *
-   * @return string
-   * @author Rachel Graves 
-   * @author Maarten Jacobs 
-   */
-  public function getOrigin() {
-    return $this->_origin;
   }
   
   /**

@@ -31,7 +31,7 @@
 <a href="#reports" class="dropdown-toggle" data-toggle="dropdown">
                                     Reports <b class="caret"></b></a><ul class="dropdown-menu">
 <li><a href="../errors.html"><i class="icon-remove-sign"></i> Errors 
-                <span class="label label-info">11</span></a></li>
+                <span class="label label-info">0</span></a></li>
 <li><a href="../markers.html"><i class="icon-map-marker"></i> Markers 
                 <ul></ul></a></li>
 <li><a href="../deprecated.html"><i class="icon-stop"></i> Deprecated elements 
@@ -56,25 +56,16 @@
 <li class="nav-header">
 <i class="icon-custom icon-method"></i> Methods</li>
 <li class="method public "><a href="#__construct" title="__construct :: Assign properties to this object"><span class="description">Assign properties to this object</span><pre>__construct()</pre></a></li>
-<li class="method public "><a href="#__get" title="__get :: "><span class="description">__get()
-        </span><pre>__get()</pre></a></li>
-<li class="method public "><a href="#__set" title="__set :: "><span class="description">__set()
-        </span><pre>__set()</pre></a></li>
+<li class="method public "><a href="#__get" title="__get :: Returns the value of a dynamic property of this object."><span class="description">Returns the value of a dynamic property of this object.</span><pre>__get()</pre></a></li>
+<li class="method public "><a href="#__set" title="__set :: Sets the value of a dynamic property of this object."><span class="description">Sets the value of a dynamic property of this object.</span><pre>__set()</pre></a></li>
 <li class="method public "><a href="#addTo" title="addTo :: Adds a recipient to the list of recipients"><span class="description">Adds a recipient to the list of recipients</span><pre>addTo()</pre></a></li>
-<li class="method public "><a href="#getId" title="getId :: "><span class="description">getId()
-        </span><pre>getId()</pre></a></li>
-<li class="method public "><a href="#getMessage" title="getMessage :: "><span class="description">getMessage()
-        </span><pre>getMessage()</pre></a></li>
-<li class="method public "><a href="#getOp" title="getOp :: "><span class="description">getOp()
-        </span><pre>getOp()</pre></a></li>
-<li class="method public "><a href="#getOrigin" title="getOrigin :: "><span class="description">getOrigin()
-        </span><pre>getOrigin()</pre></a></li>
-<li class="method public "><a href="#getPayload" title="getPayload :: "><span class="description">getPayload()
-        </span><pre>getPayload()</pre></a></li>
-<li class="method public "><a href="#getTos" title="getTos :: "><span class="description">getTos()
-        </span><pre>getTos()</pre></a></li>
-<li class="method public "><a href="#getType" title="getType :: "><span class="description">getType()
-        </span><pre>getType()</pre></a></li>
+<li class="method public "><a href="#getId" title="getId :: Returns the generated ID of this object"><span class="description">Returns the generated ID of this object</span><pre>getId()</pre></a></li>
+<li class="method public "><a href="#getMessage" title="getMessage :: Returns the message of the notification."><span class="description">Returns the message of the notification.</span><pre>getMessage()</pre></a></li>
+<li class="method public "><a href="#getOp" title="getOp :: Return the operation that was executed on the payload, which is the trigger to the notification process."><span class="description">Return the operation that was executed on the payload, which is the trigger to the notification process.</span><pre>getOp()</pre></a></li>
+<li class="method public "><a href="#getOrigin" title="getOrigin :: Return a string of the module that implemented this factory"><span class="description">Return a string of the module that implemented this factory</span><pre>getOrigin()</pre></a></li>
+<li class="method public "><a href="#getPayload" title="getPayload :: Return the payload that is associated with the operation."><span class="description">Return the payload that is associated with the operation.</span><pre>getPayload()</pre></a></li>
+<li class="method public "><a href="#getTos" title="getTos :: Returns the list of recipients this notifications is destined to be sent to."><span class="description">Returns the list of recipients this notifications is destined to be sent to.</span><pre>getTos()</pre></a></li>
+<li class="method public "><a href="#getType" title="getType :: Return the type of the payload, which triggered this notification process."><span class="description">Return the type of the payload, which triggered this notification process.</span><pre>getType()</pre></a></li>
 <li class="method public "><a href="#send" title="send :: Send this notification"><span class="description">Send this notification</span><pre>send()</pre></a></li>
 <li class="method public "><a href="#setMessage" title="setMessage :: Set this Notification's message"><span class="description">Set this Notification's message</span><pre>setMessage()</pre></a></li>
 <li class="method public "><a href="#setSender" title="setSender :: Set the notification's sender"><span class="description">Set the notification's sender</span><pre>setSender()</pre></a></li>
@@ -145,35 +136,42 @@ effectively erasing the list of recipients.</span><pre>setTo()</pre></a></li>
 </div></div>
 </div>
 <a name="__get" id="__get"></a><div class="element clickable method public __get" data-toggle="collapse" data-target=".__get .collapse">
-<h2>__get()
-        </h2>
-<pre>__get($name) </pre>
+<h2>Returns the value of a dynamic property of this object.</h2>
+<pre>__get(string $name) : mixed</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>author</th>
+<td><a href="">Pavlos Syngelakis</a></td>
+</tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$name</h4>
-<code></code>
-</div>
+<code>string</code><p>Name of the dynamic property</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
 </div></div>
 </div>
 <a name="__set" id="__set"></a><div class="element clickable method public __set" data-toggle="collapse" data-target=".__set .collapse">
-<h2>__set()
-        </h2>
-<pre>__set($name, $value) </pre>
+<h2>Sets the value of a dynamic property of this object.</h2>
+<pre>__set(string $name, mixed $value) : mixed</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8">
 <p class="long_description"></p>
+<table class="table table-bordered"><tr>
+<th>author</th>
+<td><a href="">Pavlos Syngelakis</a></td>
+</tr></table>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$name</h4>
-<code></code>
-</div>
+<code>string</code><p>Name of the dynamic property</p></div>
 <div class="subelement argument">
 <h4>$value</h4>
-<code></code>
-</div>
+<code>mixed</code><p>New value for the dynamic property</p></div>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
 </div></div>
 </div>
 <a name="addTo" id="addTo"></a><div class="element clickable method public addTo" data-toggle="collapse" data-target=".addTo .collapse">
@@ -200,57 +198,139 @@ effectively erasing the list of recipients.</span><pre>setTo()</pre></a></li>
 </div></div>
 </div>
 <a name="getId" id="getId"></a><div class="element clickable method public getId" data-toggle="collapse" data-target=".getId .collapse">
-<h2>getId()
-        </h2>
-<pre>getId() </pre>
+<h2>Returns the generated ID of this object</h2>
+<pre>getId() : string</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
 </div>
 <a name="getMessage" id="getMessage"></a><div class="element clickable method public getMessage" data-toggle="collapse" data-target=".getMessage .collapse">
-<h2>getMessage()
-        </h2>
-<pre>getMessage() </pre>
+<h2>Returns the message of the notification.</h2>
+<pre>getMessage() : string</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
 </div>
 <a name="getOp" id="getOp"></a><div class="element clickable method public getOp" data-toggle="collapse" data-target=".getOp .collapse">
-<h2>getOp()
-        </h2>
-<pre>getOp() </pre>
+<h2>Return the operation that was executed on the payload, which is the trigger to the notification process.</h2>
+<pre>getOp() : string</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+<div class="row collapse">
+<div class="span4">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>example</th>
+<td>'created' -&gt; Can mean that the payload has just been created in the system.
+'like' -&gt; Can mean that the payload has just been tagged as liked by a user.</td>
+</tr>
+<tr>
+<th>author</th>
+<td><a href="">Rachel Graves</a></td>
+</tr>
+<tr>
+<th>author</th>
+<td><a href="">Maarten Jacobs</a></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div>
+<div class="span4">
+<h3>Examples</h3>
+<pre class="prettyprint linenums"></pre>
+</div>
+</div>
 </div>
 <a name="getOrigin" id="getOrigin"></a><div class="element clickable method public getOrigin" data-toggle="collapse" data-target=".getOrigin .collapse">
-<h2>getOrigin()
-        </h2>
-<pre>getOrigin() </pre>
+<h2>Return a string of the module that implemented this factory</h2>
+<pre>getOrigin() : string</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>author</th>
+<td><a href="">Rachel Graves</a></td>
+</tr>
+<tr>
+<th>author</th>
+<td><a href="">Maarten Jacobs</a></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div></div>
 </div>
 <a name="getPayload" id="getPayload"></a><div class="element clickable method public getPayload" data-toggle="collapse" data-target=".getPayload .collapse">
-<h2>getPayload()
-        </h2>
-<pre>getPayload() </pre>
+<h2>Return the payload that is associated with the operation.</h2>
+<pre>getPayload() : mixed</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"><p>This can be any type of content in the system.</p></p>
+<table class="table table-bordered">
+<tr>
+<th>author</th>
+<td><a href="">Rachel Graves</a></td>
+</tr>
+<tr>
+<th>author</th>
+<td><a href="">Maarten Jacobs</a></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>mixed</code></div>
+</div></div>
 </div>
 <a name="getTos" id="getTos"></a><div class="element clickable method public getTos" data-toggle="collapse" data-target=".getTos .collapse">
-<h2>getTos()
-        </h2>
-<pre>getTos() </pre>
+<h2>Returns the list of recipients this notifications is destined to be sent to.</h2>
+<pre>getTos() : array</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+<div class="row collapse"><div class="span8">
+<p class="long_description"></p>
+<h3>Returns</h3>
+<div class="subelement response"><code>array</code></div>
+</div></div>
 </div>
 <a name="getType" id="getType"></a><div class="element clickable method public getType" data-toggle="collapse" data-target=".getType .collapse">
-<h2>getType()
-        </h2>
-<pre>getType() </pre>
+<h2>Return the type of the payload, which triggered this notification process.</h2>
+<pre>getType() : string</pre>
 <div class="labels"></div>
-<div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
+<div class="row collapse">
+<div class="span4">
+<p class="long_description"></p>
+<table class="table table-bordered">
+<tr>
+<th>example</th>
+<td>'post' -&gt; The payload corresponds to what the system understands as a post type.</td>
+</tr>
+<tr>
+<th>author</th>
+<td><a href="">Rachel Graves</a></td>
+</tr>
+<tr>
+<th>author</th>
+<td><a href="">Maarten Jacobs</a></td>
+</tr>
+</table>
+<h3>Returns</h3>
+<div class="subelement response"><code>string</code></div>
+</div>
+<div class="span4">
+<h3>Examples</h3>
+<pre class="prettyprint linenums"></pre>
+</div>
+</div>
 </div>
 <a name="send" id="send"></a><div class="element clickable method public send" data-toggle="collapse" data-target=".send .collapse">
 <h2>Send this notification</h2>
-<pre>send() </pre>
+<pre>send() : void</pre>
 <div class="labels"></div>
 <div class="row collapse"><div class="span8"><p class="long_description"></p></div></div>
 </div>
@@ -286,7 +366,7 @@ effectively erasing the list of recipients.</span><pre>setTo()</pre></a></li>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$sender</h4>
-<code>string</code>
+<code><a href="../classes/Sender.html">\Sender</a></code>
 </div>
 <h3>Returns</h3>
 <div class="subelement response"><code><a href="../classes/Notifications_Api_Notification.html">\Notifications_Api_Notification</a></code></div>
@@ -337,7 +417,7 @@ effectively erasing the list of recipients.</h2>
 <h3>Parameters</h3>
 <div class="subelement argument">
 <h4>$recipient</h4>
-<code>\IRecipient</code>
+<code><a href="../classes/Recipient.html">\Recipient</a></code>
 </div>
 <h3>Returns</h3>
 <div class="subelement response"><code><a href="../classes/Notifications_Api_Notification.html">\Notifications_Api_Notification</a></code></div>
@@ -406,7 +486,7 @@ effectively erasing the list of recipients.</h2>
 <div class="row"><footer class="span12">
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by <a href="http://glyphicons.com/">Glyphicons</a>.<br>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor 2.0.0a2</a> and<br>
-            generated on 2012-05-11T16:15:13+01:00.<br></footer></div>
+            generated on 2012-05-11T16:27:45+01:00.<br></footer></div>
 </div>
 </body>
 </html>

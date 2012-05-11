@@ -96,40 +96,104 @@ class Notifications_Api_Notification {
     $this->callbacks[] = $origin . '_notifications_api_send';
   }
   
-  public function __get($name){
-    if( isset($this->_data[$name]) ){
+  /**
+   * Returns the value of a dynamic property of this object.
+   *
+   * @param string $name Name of the dynamic property
+   * @return mixed
+   * @author Pavlos Syngelakis
+   **/
+  public function __get($name) {
+    if(isset($this->_data[$name])){
       return $this->_data[$name];
     }
   }
   
-  public function __set( $name, $value ){
+  /**
+   * Sets the value of a dynamic property of this object.
+   *
+   * @param string $name Name of the dynamic property
+   * @param mixed $value New value for the dynamic property
+   * @return mixed
+   * @author Pavlos Syngelakis
+   **/
+  public function __set($name, $value) {
     $this->_data[$name] = $value;
   }
   
+  /**
+   * Returns the generated ID of this object
+   *
+   * @return string
+   **/
   public function getId() {
     return $this->_id;
   }
 
+  /**
+   * Return the type of the payload, which triggered this notification process.
+   *
+   * @example
+   *  'post' -> The payload corresponds to what the system understands as a post type.
+   * @return string
+   * @author Rachel Graves 
+   * @author Maarten Jacobs 
+   */
   public function getType() {
     return $this->_type_payload;
   }
 
+  /**
+   * Return the operation that was executed on the payload, which is the trigger to the notification process.
+   *
+   * @example
+   *  'created' -> Can mean that the payload has just been created in the system.
+   *  'like' -> Can mean that the payload has just been tagged as liked by a user. 
+   * @return string
+   * @author Rachel Graves 
+   * @author Maarten Jacobs 
+   **/
   public function getOp() {
     return $this->_op_payload;
   }
 
+  /**
+   * Return the payload that is associated with the operation.
+   * This can be any type of content in the system.
+   *
+   * @return mixed
+   * @author Rachel Graves 
+   * @author Maarten Jacobs 
+   **/
   public function getPayload() {
     return $this->_payload;
   }
   
+  /**
+   * Return a string of the module that implemented this factory
+   *
+   * @return string
+   * @author Rachel Graves 
+   * @author Maarten Jacobs 
+   */
   public function getOrigin() {
     return $this->_origin;
   }
   
+  /**
+   * Returns the list of recipients this notifications is destined to be sent to.
+   *
+   * @return array
+   **/
   public function getTos() {
     return $this->_recipients;
   }
   
+  /**
+   * Returns the message of the notification.
+   *
+   * @return string
+   **/
   public function getMessage() {
     return $this->_message;
   }
@@ -149,7 +213,7 @@ class Notifications_Api_Notification {
   /**
    * Set the notification's sender
    *
-   * @param string $sender 
+   * @param Sender $sender 
    * @return Notifications_Api_Notification
    * @author Rachel Graves
    */
@@ -160,6 +224,8 @@ class Notifications_Api_Notification {
 
   /**
    * Send this notification
+   * 
+   * @return void
    */
   public function send() {
     $callable_callbacks = array_filter($this->callbacks, 'is_callable');
@@ -222,7 +288,7 @@ class Notifications_Api_Notification {
   /**
    * Add a recipient to the notification
    *
-   * @param IRecipient $recipient 
+   * @param Recipient $recipient 
    * @return Notifications_Api_Notification
    */
   protected function _addRecipient(Recipient $recipient) {
