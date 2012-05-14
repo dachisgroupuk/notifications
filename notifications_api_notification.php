@@ -80,13 +80,13 @@ class Notifications_Api_Notification {
 
     // Get default values from the factory
     $this->setMessage($factory->message);
-		if($factory->sender instanceof Sender){
+		if($factory->sender instanceof Notifications_Api_Sender){
     	$this->setSender($factory->sender);
 		}
 		
 		if(is_array($factory->recipients)){
 			foreach ($factory->recipients as $recipient) {
-				if($recipient instanceof Recipient){
+				if($recipient instanceof Notifications_Api_Recipient){
 					$this->_addRecipient($recipient);
 				}	      
 	    }
@@ -217,7 +217,7 @@ class Notifications_Api_Notification {
    * @return Notifications_Api_Notification
    * @author Rachel Graves
    */
-  public function setSender(Sender $sender) {
+  public function setSender(Notifications_Api_Sender $sender) {
     $this->_initiator = $sender;
     return $this;
   }
@@ -254,10 +254,10 @@ class Notifications_Api_Notification {
    */
   public function addTo($type, $data) {
     
-    if ($type instanceof Recipient) {
+    if ($type instanceof Notifications_Api_Recipient) {
       $recipient = $type;
     } else {
-      $recipient = new Recipient($type, $data);      
+      $recipient = new Notifications_Api_Recipient($type, $data);      
     }  
 
     $this->_addRecipient($recipient);
@@ -275,10 +275,10 @@ class Notifications_Api_Notification {
    */
   public function setTo($type, $data) {
     
-    if ($type instanceof Recipient) {
+    if ($type instanceof Notifications_Api_Recipient) {
       $recipient = $type;
     } else {
-      $recipient = new Recipient($type, $data);      
+      $recipient = new Notifications_Api_Recipient($type, $data);      
     }  
     
     $this->_recipients = array($recipient);
@@ -291,7 +291,7 @@ class Notifications_Api_Notification {
    * @param Recipient $recipient 
    * @return Notifications_Api_Notification
    */
-  protected function _addRecipient(Recipient $recipient) {
+  protected function _addRecipient(Notifications_Api_Recipient $recipient) {
     $this->_recipients[] = $recipient;
     return $this;
   }

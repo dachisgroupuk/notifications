@@ -7,5 +7,5 @@
  * @package notifications_api
  * @author Maarten Jacobs
  **/
-class Sender extends Actor {
+class Notifications_Api_Sender extends Notifications_Api_Actor {
 }

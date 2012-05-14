@@ -6,7 +6,7 @@
  * @package notifications_api
  * @author Maarten Jacobs
  */
-class Actor {
+class Notifications_Api_Actor {
   
   /**
    * Represents the type of the data the actro holds.
