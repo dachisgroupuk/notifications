@@ -582,7 +582,7 @@ TODO: REMOVE ME]]></description>
       </method>
     </class>
   </file>
-  <file path="notifications_api_notification.php" hash="3106464b71ef8f9f2198ba5f92e495e5" package="notifications\api">
+  <file path="notifications_api_notification.php" hash="18723bc945addc49d6f4729302c02639" package="notifications\api">
     <docblock line="3">
       <description><![CDATA[Represents a single notification in the system.]]></description>
       <long-description><![CDATA[]]></long-description>
@@ -855,213 +855,224 @@ TODO: REMOVE ME]]></description>
         </docblock>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="197" package="">
-        <name>getMessage</name>
+        <name>getSender</name>
         <type>function</type>
         <docblock line="192">
+          <description><![CDATA[Returns the sender object related to this notification.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="192" name="return" description="" type="\Notifications_Api_Sender">
+            <type by_reference="false">\Notifications_Api_Sender</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="206" package="">
+        <name>getMessage</name>
+        <type>function</type>
+        <docblock line="201">
           <description><![CDATA[Returns the message of the notification.]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="192" name="return" description="" type="string">
+          <tag line="201" name="return" description="" type="string">
             <type by_reference="false">string</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="208" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="217" package="">
         <name>setMessage</name>
         <type>function</type>
-        <docblock line="201">
+        <docblock line="210">
           <description><![CDATA[Set this Notification's message]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="201" name="param" description="" type="string" variable="$message">
+          <tag line="210" name="param" description="" type="string" variable="$message">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="201" name="return" description="" type="\Notifications_Api_Notification">
+          <tag line="210" name="return" description="" type="\Notifications_Api_Notification">
             <type by_reference="false">\Notifications_Api_Notification</type>
           </tag>
-          <tag line="201" name="author" description="Rachel Graves"/>
+          <tag line="210" name="author" description="Rachel Graves"/>
         </docblock>
-        <argument line="208">
+        <argument line="217">
           <name>$message</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="220" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="229" package="">
         <name>setSender</name>
         <type>function</type>
-        <docblock line="213">
+        <docblock line="222">
           <description><![CDATA[Set the notification's sender]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="213" name="param" description="" type="\Notifications_Api_Sender" variable="$sender">
+          <tag line="222" name="param" description="" type="\Notifications_Api_Sender" variable="$sender">
             <type by_reference="false">\Notifications_Api_Sender</type>
           </tag>
-          <tag line="213" name="return" description="" type="\Notifications_Api_Notification">
+          <tag line="222" name="return" description="" type="\Notifications_Api_Notification">
             <type by_reference="false">\Notifications_Api_Notification</type>
           </tag>
-          <tag line="213" name="author" description="Rachel Graves"/>
+          <tag line="222" name="author" description="Rachel Graves"/>
         </docblock>
-        <argument line="220">
+        <argument line="229">
           <name>$sender</name>
           <default><![CDATA[]]></default>
           <type>Notifications_Api_Sender</type>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="230" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="239" package="">
         <name>send</name>
         <type>function</type>
-        <docblock line="225">
+        <docblock line="234">
           <description><![CDATA[Send this notification]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="225" name="return" description="" type="void">
+          <tag line="234" name="return" description="" type="void">
             <type by_reference="false">void</type>
           </tag>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="243" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="252" package="">
         <name>store</name>
         <type>function</type>
-        <docblock line="237">
+        <docblock line="246">
           <description><![CDATA[Store a notification back in the PG tips factory]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="237" name="return" description="" type="void">
+          <tag line="246" name="return" description="" type="void">
             <type by_reference="false">void</type>
           </tag>
-          <tag line="237" name="author" description="Rachel Graves"/>
+          <tag line="246" name="author" description="Rachel Graves"/>
         </docblock>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="255" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="264" package="">
         <name>addTo</name>
         <type>function</type>
-        <docblock line="247">
+        <docblock line="256">
           <description><![CDATA[Adds a recipient to the list of recipients]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="247" name="param" description="" type="string" variable="$type">
+          <tag line="256" name="param" description="" type="string" variable="$type">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="247" name="param" description="" type="mixed" variable="$data">
+          <tag line="256" name="param" description="" type="mixed" variable="$data">
             <type by_reference="false">mixed</type>
           </tag>
-          <tag line="247" name="return" description="" type="\Notifications_Api_Notification">
+          <tag line="256" name="return" description="" type="\Notifications_Api_Notification">
             <type by_reference="false">\Notifications_Api_Notification</type>
           </tag>
-          <tag line="247" name="author" description="Maarten Jacobs"/>
+          <tag line="256" name="author" description="Maarten Jacobs"/>
         </docblock>
-        <argument line="255">
+        <argument line="264">
           <name>$type</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="255">
+        <argument line="264">
           <name>$data</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="276" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="285" package="">
         <name>setTo</name>
         <type>function</type>
-        <docblock line="267">
+        <docblock line="276">
           <description><![CDATA[Set the recipients list to a single recipient,
 effectively erasing the list of recipients.]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="267" name="param" description="" type="string" variable="$type">
+          <tag line="276" name="param" description="" type="string" variable="$type">
             <type by_reference="false">string</type>
           </tag>
-          <tag line="267" name="param" description="" type="mixed" variable="$data">
+          <tag line="276" name="param" description="" type="mixed" variable="$data">
             <type by_reference="false">mixed</type>
           </tag>
-          <tag line="267" name="return" description="" type="\Notifications_Api_Notification">
+          <tag line="276" name="return" description="" type="\Notifications_Api_Notification">
             <type by_reference="false">\Notifications_Api_Notification</type>
           </tag>
-          <tag line="267" name="author" description="Maarten Jacobs"/>
+          <tag line="276" name="author" description="Maarten Jacobs"/>
         </docblock>
-        <argument line="276">
+        <argument line="285">
           <name>$type</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
-        <argument line="276">
+        <argument line="285">
           <name>$data</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="protected" namespace="default" line="294" package="">
+      <method final="false" abstract="false" static="false" visibility="protected" namespace="default" line="303" package="">
         <name>_addRecipient</name>
         <type>function</type>
-        <docblock line="288">
+        <docblock line="297">
           <description><![CDATA[Add a recipient to the notification]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="288" name="param" description="" type="\Notifications_Api_Recipient" variable="$recipient">
+          <tag line="297" name="param" description="" type="\Notifications_Api_Recipient" variable="$recipient">
             <type by_reference="false">\Notifications_Api_Recipient</type>
           </tag>
-          <tag line="288" name="return" description="" type="\Notifications_Api_Notification">
+          <tag line="297" name="return" description="" type="\Notifications_Api_Notification">
             <type by_reference="false">\Notifications_Api_Notification</type>
           </tag>
         </docblock>
-        <argument line="294">
+        <argument line="303">
           <name>$recipient</name>
           <default><![CDATA[]]></default>
           <type>Notifications_Api_Recipient</type>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="306" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="315" package="">
         <name>setCallbacks</name>
         <type>function</type>
-        <docblock line="299">
+        <docblock line="308">
           <description><![CDATA[Override the callbacks set for this notification.]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="299" name="param" description="The new list of callbacks." type="array" variable="$callbacks">
+          <tag line="308" name="param" description="The new list of callbacks." type="array" variable="$callbacks">
             <type by_reference="false">array</type>
           </tag>
-          <tag line="299" name="return" description="" type="\Notifications_Api_Notification">
+          <tag line="308" name="return" description="" type="\Notifications_Api_Notification">
             <type by_reference="false">\Notifications_Api_Notification</type>
           </tag>
-          <tag line="299" name="author" description="Maarten Jacobs"/>
+          <tag line="308" name="author" description="Maarten Jacobs"/>
         </docblock>
-        <argument line="306">
+        <argument line="315">
           <name>$callbacks</name>
           <default><![CDATA[]]></default>
           <type>array</type>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="319" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="328" package="">
         <name>addCallback</name>
         <type>function</type>
-        <docblock line="311">
+        <docblock line="320">
           <description><![CDATA[Add a callback to the callbacks list for this notification.]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="311" name="param" description="The callback to be added to the list." type="\callable" variable="$callback">
+          <tag line="320" name="param" description="The callback to be added to the list." type="\callable" variable="$callback">
             <type by_reference="false">\callable</type>
           </tag>
-          <tag line="311" name="throws" description="" type="\Notification_Api_Exception">
+          <tag line="320" name="throws" description="" type="\Notification_Api_Exception">
             <type by_reference="false">\Notification_Api_Exception</type>
           </tag>
-          <tag line="311" name="return" description="" type="\Notifications_Api_Notification">
+          <tag line="320" name="return" description="" type="\Notifications_Api_Notification">
             <type by_reference="false">\Notifications_Api_Notification</type>
           </tag>
-          <tag line="311" name="author" description="Maarten Jacobs"/>
+          <tag line="320" name="author" description="Maarten Jacobs"/>
         </docblock>
-        <argument line="319">
+        <argument line="328">
           <name>$callback</name>
           <default><![CDATA[]]></default>
           <type/>
         </argument>
       </method>
-      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="335" package="">
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="344" package="">
         <name>removeCallback</name>
         <type>function</type>
-        <docblock line="328">
+        <docblock line="337">
           <description><![CDATA[Removes a callback from the callbacks list for this notification.]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="328" name="param" description="The callback to be found and removed." type="\callable" variable="$callback">
+          <tag line="337" name="param" description="The callback to be found and removed." type="\callable" variable="$callback">
             <type by_reference="false">\callable</type>
           </tag>
-          <tag line="328" name="return" description="" type="\Notifications_Api_Notification">
+          <tag line="337" name="return" description="" type="\Notifications_Api_Notification">
             <type by_reference="false">\Notifications_Api_Notification</type>
           </tag>
-          <tag line="328" name="author" description="Maarten Jacobs"/>
+          <tag line="337" name="author" description="Maarten Jacobs"/>
         </docblock>
-        <argument line="335">
+        <argument line="344">
           <name>$callback</name>
           <default><![CDATA[]]></default>
           <type/>
