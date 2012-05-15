@@ -213,7 +213,7 @@ class Notifications_Api_Notification {
   /**
    * Set the notification's sender
    *
-   * @param Sender $sender 
+   * @param Notifications_Api_Sender $sender 
    * @return Notifications_Api_Notification
    * @author Rachel Graves
    */
@@ -288,7 +288,7 @@ class Notifications_Api_Notification {
   /**
    * Add a recipient to the notification
    *
-   * @param Recipient $recipient 
+   * @param Notifications_Api_Recipient $recipient 
    * @return Notifications_Api_Notification
    */
   protected function _addRecipient(Notifications_Api_Recipient $recipient) {
@@ -311,15 +311,16 @@ class Notifications_Api_Notification {
   /**
    * Add a callback to the callbacks list for this notification.
    *
-   * @throws NotificationApiException
-   * @return NotificationApiException
+   * @param callable $callback The callback to be added to the list.
+   * @throws Notification_Api_Exception
+   * @return Notifications_Api_Notification
    * @author Maarten Jacobs
    **/
   public function addCallback($callback) {
     if (is_callable($callback)) {
       $this->callbacks[] = $callback;
     } else {
-      throw new NotificationApiException('An invalid callback was passed to NotificationApiException::addCallback.');
+      throw new Notification_Api_Exception('An invalid callback was passed to NotificationApiException::addCallback.');
     }
     return $this;
   }
@@ -327,6 +328,7 @@ class Notifications_Api_Notification {
   /**
    * Removes a callback from the callbacks list for this notification.
    *
+   * @param callable $callback The callback to be found and removed.
    * @return Notifications_Api_Notification
    * @author Maarten Jacobs
    **/

@@ -248,7 +248,7 @@ class GenerationTest extends PHPUnit_Framework_TestCase {
   /**
    * The callbacks on manipulation can throw a 
    *
-   * @expectedException NotificationApiException 
+   * @expectedException Notification_Api_Exception 
    * @return void
    **/
   function testGenerateFaultyCallbacks() {

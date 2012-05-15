@@ -6,6 +6,6 @@
  * @package notifications_api
  * @author Maarten Jacobs
  **/
-class NotificationApiException extends Exception {
+class Notification_Api_Exception extends Exception {
 
 }
