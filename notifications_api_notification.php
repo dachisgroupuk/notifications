@@ -296,4 +296,46 @@ class Notifications_Api_Notification {
     return $this;
   }
 
+  /**
+   * Override the callbacks set for this notification.
+   *
+   * @param array $callbacks The new list of callbacks.
+   * @return Notifications_Api_Notification
+   * @author Maarten Jacobs
+   **/
+  public function setCallbacks(array $callbacks) {
+    $this->callbacks = $callbacks;
+    return $this;
+  }
+
+  /**
+   * Add a callback to the callbacks list for this notification.
+   *
+   * @throws NotificationApiException
+   * @return NotificationApiException
+   * @author Maarten Jacobs
+   **/
+  public function addCallback($callback) {
+    if (is_callable($callback)) {
+      $this->callbacks[] = $callback;
+    } else {
+      throw new NotificationApiException('An invalid callback was passed to NotificationApiException::addCallback.');
+    }
+    return $this;
+  }
+
+  /**
+   * Removes a callback from the callbacks list for this notification.
+   *
+   * @return Notifications_Api_Notification
+   * @author Maarten Jacobs
+   **/
+  public function removeCallback($callback) {
+    $key = array_search($callback, $this->callbacks);
+    if ($key !== FALSE) {
+      unset($this->callbacks[$key]);
+    }
+    return $this;
+  }
+
 }
