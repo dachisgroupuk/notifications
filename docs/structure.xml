@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project version="2.0.0a2" title="">
-  <file path="actor.php" hash="61c24b26b93ace59c95462a6383e9752" package="notifications\api">
+  <file path="actor.php" hash="45a225954da7097dba4602f5d828a73a" package="notifications\api">
     <docblock line="3">
       <description><![CDATA[Representation of the Actor of a notification]]></description>
       <long-description><![CDATA[]]></long-description>
@@ -8,8 +8,8 @@
       <tag line="3" name="author" description="Maarten Jacobs"/>
     </docblock>
     <class final="false" abstract="false" namespace="default" line="9" package="notifications\api">
-      <name>Actor</name>
-      <full_name>\Actor</full_name>
+      <name>Notifications_Api_Actor</name>
+      <full_name>\Notifications_Api_Actor</full_name>
       <extends/>
       <docblock line="3">
         <description><![CDATA[Representation of the Actor of a notification]]></description>
@@ -93,6 +93,25 @@
           <type/>
         </argument>
       </method>
+    </class>
+  </file>
+  <file path="exceptions.php" hash="5fbf74c69163bb1860050dd47fbf374e" package="notifications\api">
+    <docblock line="3">
+      <description><![CDATA[Context class, as in giving context to the thrown exceptions, to trace their origin]]></description>
+      <long-description><![CDATA[]]></long-description>
+      <tag line="3" name="package" description="notifications_api"/>
+      <tag line="3" name="author" description="Maarten Jacobs"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="default" line="9" package="notifications\api">
+      <name>Notification_Api_Exception</name>
+      <full_name>\Notification_Api_Exception</full_name>
+      <extends>\Exception</extends>
+      <docblock line="3">
+        <description><![CDATA[Context class, as in giving context to the thrown exceptions, to trace their origin]]></description>
+        <long-description><![CDATA[]]></long-description>
+        <tag line="3" name="package" description="notifications_api"/>
+        <tag line="3" name="author" description="Maarten Jacobs"/>
+      </docblock>
     </class>
   </file>
   <file path="notifications_api_factory_queue.php" hash="dab9f324be9ae64f815729b2790e577c" package="notifications\api">
@@ -563,7 +582,7 @@ TODO: REMOVE ME]]></description>
       </method>
     </class>
   </file>
-  <file path="notifications_api_notification.php" hash="e87f4020ac2bcf3fceb15387b6d27ce5" package="notifications\api">
+  <file path="notifications_api_notification.php" hash="3106464b71ef8f9f2198ba5f92e495e5" package="notifications\api">
     <docblock line="3">
       <description><![CDATA[Represents a single notification in the system.]]></description>
       <long-description><![CDATA[]]></long-description>
@@ -872,8 +891,8 @@ TODO: REMOVE ME]]></description>
         <docblock line="213">
           <description><![CDATA[Set the notification's sender]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="213" name="param" description="" type="\Sender" variable="$sender">
-            <type by_reference="false">\Sender</type>
+          <tag line="213" name="param" description="" type="\Notifications_Api_Sender" variable="$sender">
+            <type by_reference="false">\Notifications_Api_Sender</type>
           </tag>
           <tag line="213" name="return" description="" type="\Notifications_Api_Notification">
             <type by_reference="false">\Notifications_Api_Notification</type>
@@ -883,7 +902,7 @@ TODO: REMOVE ME]]></description>
         <argument line="220">
           <name>$sender</name>
           <default><![CDATA[]]></default>
-          <type>Sender</type>
+          <type>Notifications_Api_Sender</type>
         </argument>
       </method>
       <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="230" package="">
@@ -972,8 +991,8 @@ effectively erasing the list of recipients.]]></description>
         <docblock line="288">
           <description><![CDATA[Add a recipient to the notification]]></description>
           <long-description><![CDATA[]]></long-description>
-          <tag line="288" name="param" description="" type="\Recipient" variable="$recipient">
-            <type by_reference="false">\Recipient</type>
+          <tag line="288" name="param" description="" type="\Notifications_Api_Recipient" variable="$recipient">
+            <type by_reference="false">\Notifications_Api_Recipient</type>
           </tag>
           <tag line="288" name="return" description="" type="\Notifications_Api_Notification">
             <type by_reference="false">\Notifications_Api_Notification</type>
@@ -982,12 +1001,75 @@ effectively erasing the list of recipients.]]></description>
         <argument line="294">
           <name>$recipient</name>
           <default><![CDATA[]]></default>
-          <type>Recipient</type>
+          <type>Notifications_Api_Recipient</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="306" package="">
+        <name>setCallbacks</name>
+        <type>function</type>
+        <docblock line="299">
+          <description><![CDATA[Override the callbacks set for this notification.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="299" name="param" description="The new list of callbacks." type="array" variable="$callbacks">
+            <type by_reference="false">array</type>
+          </tag>
+          <tag line="299" name="return" description="" type="\Notifications_Api_Notification">
+            <type by_reference="false">\Notifications_Api_Notification</type>
+          </tag>
+          <tag line="299" name="author" description="Maarten Jacobs"/>
+        </docblock>
+        <argument line="306">
+          <name>$callbacks</name>
+          <default><![CDATA[]]></default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="319" package="">
+        <name>addCallback</name>
+        <type>function</type>
+        <docblock line="311">
+          <description><![CDATA[Add a callback to the callbacks list for this notification.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="311" name="param" description="The callback to be added to the list." type="\callable" variable="$callback">
+            <type by_reference="false">\callable</type>
+          </tag>
+          <tag line="311" name="throws" description="" type="\Notification_Api_Exception">
+            <type by_reference="false">\Notification_Api_Exception</type>
+          </tag>
+          <tag line="311" name="return" description="" type="\Notifications_Api_Notification">
+            <type by_reference="false">\Notifications_Api_Notification</type>
+          </tag>
+          <tag line="311" name="author" description="Maarten Jacobs"/>
+        </docblock>
+        <argument line="319">
+          <name>$callback</name>
+          <default><![CDATA[]]></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="default" line="335" package="">
+        <name>removeCallback</name>
+        <type>function</type>
+        <docblock line="328">
+          <description><![CDATA[Removes a callback from the callbacks list for this notification.]]></description>
+          <long-description><![CDATA[]]></long-description>
+          <tag line="328" name="param" description="The callback to be found and removed." type="\callable" variable="$callback">
+            <type by_reference="false">\callable</type>
+          </tag>
+          <tag line="328" name="return" description="" type="\Notifications_Api_Notification">
+            <type by_reference="false">\Notifications_Api_Notification</type>
+          </tag>
+          <tag line="328" name="author" description="Maarten Jacobs"/>
+        </docblock>
+        <argument line="335">
+          <name>$callback</name>
+          <default><![CDATA[]]></default>
+          <type/>
         </argument>
       </method>
     </class>
   </file>
-  <file path="recipient.php" hash="f26929f9fe818371cf24e46946d6d059" package="notifications\api">
+  <file path="recipient.php" hash="16e22cfb6f656698722407bb195eee01" package="notifications\api">
     <docblock line="3">
       <description><![CDATA[Represents a single Recipient in the system.]]></description>
       <long-description><![CDATA[<p>Highly recommended to inherit from, to represent Recipients in your system.</p>]]></long-description>
@@ -995,9 +1077,9 @@ effectively erasing the list of recipients.]]></description>
       <tag line="3" name="author" description="Maarten Jacobs"/>
     </docblock>
     <class final="false" abstract="false" namespace="default" line="10" package="notifications\api">
-      <name>Recipient</name>
-      <full_name>\Recipient</full_name>
-      <extends>\Actor</extends>
+      <name>Notifications_Api_Recipient</name>
+      <full_name>\Notifications_Api_Recipient</full_name>
+      <extends>\Notifications_Api_Actor</extends>
       <docblock line="3">
         <description><![CDATA[Represents a single Recipient in the system.]]></description>
         <long-description><![CDATA[<p>Highly recommended to inherit from, to represent Recipients in your system.</p>]]></long-description>
@@ -1006,7 +1088,7 @@ effectively erasing the list of recipients.]]></description>
       </docblock>
     </class>
   </file>
-  <file path="sender.php" hash="b5e689371875bc3d081e23e8e19245ef" package="notifications\api">
+  <file path="sender.php" hash="0a777c816dfcc8c5d47eab4e0e8ff7ce" package="notifications\api">
     <docblock line="3">
       <description><![CDATA[Represents a single Sender in the system.]]></description>
       <long-description><![CDATA[<p>Highly recommended to inherit from, to represent Senders in your system.</p>]]></long-description>
@@ -1014,9 +1096,9 @@ effectively erasing the list of recipients.]]></description>
       <tag line="3" name="author" description="Maarten Jacobs"/>
     </docblock>
     <class final="false" abstract="false" namespace="default" line="10" package="notifications\api">
-      <name>Sender</name>
-      <full_name>\Sender</full_name>
-      <extends>\Actor</extends>
+      <name>Notifications_Api_Sender</name>
+      <full_name>\Notifications_Api_Sender</full_name>
+      <extends>\Notifications_Api_Actor</extends>
       <docblock line="3">
         <description><![CDATA[Represents a single Sender in the system.]]></description>
         <long-description><![CDATA[<p>Highly recommended to inherit from, to represent Senders in your system.</p>]]></long-description>
