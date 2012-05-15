@@ -1,5 +1,14 @@
 <?php
 
+// Test function
+function test3() {}
+
+// Test class and function for 
+class StaticClass {
+  static function test2() {
+  }
+}
+
 class GenerationTest extends PHPUnit_Framework_TestCase {
 
   /**
@@ -103,10 +112,10 @@ class GenerationTest extends PHPUnit_Framework_TestCase {
       'Content-Type' => 'text/html'
     );
 
-    $default_sender = new Sender('from', 'Example System');
+    $default_sender = new Notifications_Api_Sender('from', 'Example System');
     $default_recipients = array(
-      new Recipient('uid', 5), // the actual user
-      new Recipient('uid', 1), // admin, cuz' he's a sneaky git
+      new Notifications_Api_Recipient('uid', 5), // the actual user
+      new Notifications_Api_Recipient('uid', 1), // admin, cuz' he's a sneaky git
     );
     $default_message = 'Your comment, http://example.com/comment/34 was liked by someone!';
 
@@ -188,6 +197,89 @@ class GenerationTest extends PHPUnit_Framework_TestCase {
       $this->assertEquals($result_notification->{$prop_name}, $notification->{$prop_name});
     }
 
+  }
+
+  /**
+   * The callbacks of notifications can be manipulated through a fluent interface,
+   * so unless necessary we don't have to work with the callbacks property.
+   * 
+   * @author Maarten Jacobs 
+   **/
+  function testGenerateCallbackInterface() {
+
+    // Create a factory
+    $origin = 'mail_me_a_river';
+    $type_payload = 'page'; 
+    $op_payload = 'edited'; 
+    
+    $payload = new StdClass();
+    $payload->location = $location = 'Texas';
+    $payload->headers = $headers = array(
+      'Content-Type' => 'text/html'
+    );
+
+    $factory = new Notifications_Api_Factory_Queue(
+      $origin, 
+      $type_payload, 
+      $op_payload, 
+      $payload
+    );
+
+    // Let's manipulate some notifications!
+    $callbacks_test = array();
+    $notification = $factory->generateNotification();
+    // setCallbacks = override
+    $callbacks_test[] = $set_test = array( $this, '_test' );
+    $notification->setCallbacks( array( $set_test ) );
+    // addCallback = append
+    $callbacks_test[] = $add_test1 = array( 'StaticClass', 'test2' );
+    $notification->addCallback( $add_test1 );
+    $callbacks_test[] = $add_test2 = 'test3';
+    $notification->addCallback( $add_test2 );
+    // removeCallback = remove
+    $notification->removeCallback( $add_test2 );
+    $test2_key = array_search($add_test2, $callbacks_test);
+    unset($callbacks_test[$test2_key]);
+
+    // Check if, after altering callbacks, it's the same as our test
+    $this->assertEquals($callbacks_test, $notification->callbacks);
+  }
+
+  /**
+   * The callbacks on manipulation can throw a 
+   *
+   * @expectedException NotificationApiException 
+   * @return void
+   **/
+  function testGenerateFaultyCallbacks() {
+
+    // Create a factory
+    $origin = 'mail_me_a_river';
+    $type_payload = 'page'; 
+    $op_payload = 'edited'; 
+    
+    $payload = new StdClass();
+    $payload->location = $location = 'Texas';
+    $payload->headers = $headers = array(
+      'Content-Type' => 'text/html'
+    );
+
+    $factory = new Notifications_Api_Factory_Queue(
+      $origin, 
+      $type_payload, 
+      $op_payload, 
+      $payload
+    );
+
+    // Let's manipulate some notifications!
+    $callbacks_test = array();
+    // Throw me an error 
+    $factory->generateNotification()->addCallback( array( $this, 'inexistent_method' ) );
+
+  }
+
+  // Test functions for testGenerateCallbackInterface()
+  function _test() {
   }
 
 }

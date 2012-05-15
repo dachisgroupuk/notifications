@@ -12,5 +12,6 @@ define('BOOTSTRAP_ROOT', __DIR__ . '/../');
 require_once BOOTSTRAP_ROOT . 'actor.php';
 require_once BOOTSTRAP_ROOT . 'recipient.php';
 require_once BOOTSTRAP_ROOT . 'sender.php';
+require_once BOOTSTRAP_ROOT . 'exceptions.php';
 require_once BOOTSTRAP_ROOT . 'notifications_api_factory_queue.php';
 require_once BOOTSTRAP_ROOT . 'notifications_api_notification.php';
