@@ -188,6 +188,15 @@ class Notifications_Api_Notification {
   public function getTos() {
     return $this->_recipients;
   }
+
+  /**
+   * Returns the sender object related to this notification.
+   *
+   * @return Notifications_Api_Sender
+   **/
+  public function getSender() {
+    return $this->_initiator;
+  }
   
   /**
    * Returns the message of the notification.
