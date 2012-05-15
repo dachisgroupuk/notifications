@@ -147,7 +147,7 @@ class GenerationTest extends PHPUnit_Framework_TestCase {
       $this->assertEquals($default_recipients, $notification->getTos());
 
       // Can't test senders at the moment, because the function doesn't exist
-      // $this->assertEquals($default_sender, $notification->getSender());
+      $this->assertEquals($default_sender, $notification->getSender());
     }
 
   }
