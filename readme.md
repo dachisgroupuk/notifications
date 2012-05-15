@@ -1,3 +1,5 @@
+![Travis CI build status](https://secure.travis-ci.org/headshift/notifications.png?branch=master)
+
 # Notifications API (aka Notifications Core)
 
 This library defines a __convention__ (and a design pattern) for generating notifications, allowing alterations and sending the result. This library contains functions and classes you can use to implement that convention.
